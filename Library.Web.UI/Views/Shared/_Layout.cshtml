@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Library, Digital Library" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <title>Library | @ViewBag.Title </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="js/responsiveslides.min.js"></script>
+    <script>
+    $(function () {
+      $("#slider").responsiveSlides({
+      	auto: false,
+      	speed: 500,
+        namespace: "callbacks",
+        pager: true,
+      });
+    });
+    </script>
+
+    <script>
+ new WOW().init();
+    </script>
+
+</head>
+<body>
+    <div class="header">
+        <div class="header-top">
+            <div class="container">
+                
+                <div class="col-sm-4 logo animated wow fadeInLeft" data-wow-delay=".0s">
+                    
+                        
+                    <h1>   <a href="index.html">Digital <span>Bibliography</span></a></h1>
+                       
+</div>
+                <div class="col-sm-3 world animated wow fadeInRight" data-wow-delay=".5s">
+                    <div class="cart box_1">
+                        <a href="/Cart/Index">
+                            <h3>
+                                <div class="total">
+                                    <span class="">@PageData["cart"]</span>
+                                </div>
+                                <img src="~/images/cart.png" alt="" />
+                            </h3>
+                        </a>
+                        <p><a href="javascript:;" class=""></a></p>
+
+                    </div>
+                </div>
+               
+                <div class="col-sm-3 number animated wow fadeInRight" data-wow-delay=".5s">
+                    <span>Welcome  <a href="/Profile/Index"><i class="glyphicon glyphicon-user"></i></a></span>
+                    <p>@PageData["user"]</p>
+                </div>
+                <div class="col-sm-2 search">
+                    <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i> </a>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="head-top">
+                <div class="n-avigation">
+
+                    <nav class="navbar nav_bottom" role="navigation">
+
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header nav_2">
+                            <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#"></a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                            <ul class="nav navbar-nav nav_1">
+                                <li><a href="/Home/Index">Home</a></li>
+                                <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Department<span class="caret"></span></a>                                 
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/BookDisplay/Index/IT">IT</a></li>
+                                            <li><a href="/BookDisplay/Index/CSE">CSE</a></li>
+                                            <li><a href="/BookDisplay/Index/ECE">ECE</a></li>
+                                            <li><a href="/BookDisplay/Index/EEE">EEE</a></li>
+                                            <li><a href="/BookDisplay/Index/ALL">ALL</a></li>
+                                            
+                                        </ul>                                    
+                                </li>                              
+                              
+                                <li><a href="#">Read-Book(soon)</a></li>
+                               
+                                <li class="last"><a href="/Login/Logout">Logout</a></li>
+                                <li><a href="account.html"></a></li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+
+                    </nav>
+                </div>
+
+
+                <div class="clearfix"> </div>
+               
+                <div id="small-dialog" class="mfp-hide">
+                    <div class="search-top">
+                        <div class="login">
+                            <form action="#" method="post">
+                                <input type="submit" value="">
+                                <input type="text" name="search" value="Type something..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
+
+                            </form>
+                        </div>
+                        <p>	java</p>
+                    </div>
+                </div>
+                <script>
+						$(document).ready(function() {
+						$('.popup-with-zoom-anim').magnificPopup({
+							type: 'inline',
+							fixedContentPos: false,
+							fixedBgPos: true,
+							overflowY: 'auto',
+							closeBtnInside: true,
+							preloader: false,
+							midClick: true,
+							removalDelay: 300,
+							mainClass: 'my-mfp-zoom-in'
+						});
+
+						});
+                </script>
+                <!---->
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <div class="footer">
+                <div class="container">
+                    <div class="footer-top">
+                        <div class="col-md-6 top-footer animated wow fadeInLeft" data-wow-delay=".5s">
+                            <h3>Follow Us On</h3>
+                            <div class="social-icons">
+                                <ul class="social">
+                                    <li><a href="https://www.facebook.com/Anurag-Group-of-Institutions-1405269639728832/" target="_blank"><i></i></a> </li>
+                                    <li><a href="#"><i class="facebook"></i></a></li>
+                                    <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@cvsr.ac.in" target="_blank"><i class="google"></i> </a></li>
+                                    <li><a href="#"><i class="linked"></i> </a></li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 top-footer1 animated wow fadeInRight" data-wow-delay=".5s">
+                            <h3>Newsletter</h3>
+                            <form action="#" method="post">
+                                <input type="text" name="search" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
+                                <input type="submit" value="SUBSCRIBE">
+                            </form>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="container">
+                        <div class="col-md-3 footer-bottom-cate animated wow fadeInLeft" data-wow-delay=".5s">
+                            <h6>Departments</h6>
+                            <ul>
+                                <li><a href="/BookDisplay/Index/CSE">CSE</a></li>
+                                <li><a href="/BookDisplay/Index/IT">ECE</a></li>
+                                <li><a href="/BookDisplay/Index/EEE">EEE</a></li>
+                                <li><a href="/BookDisplay/Index/ECE">ECE</a></li>
+                                
+
+                            </ul>
+                        </div>
+                        <div class="col-md-3 footer-bottom-cate animated wow fadeInLeft" data-wow-delay=".5s">
+                            <h6>Featured BooksCollection</h6>
+                            <ul>
+                                <li><a href="#">C</a></li>
+                                <li><a href="#">C++</a></li>
+                                <li><a href="#">JAVA</a></li>
+                                <li><a href="#">BEE</a></li>
+                                <li><a href="#">HTML</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 footer-bottom-cate animated wow fadeInRight">
+                            <h6>Top Books</h6>
+                            <ul>
+                                <li><a href="#">C. Programming Language</a></li>
+                                <li><a href="#">Basic Electric Circuit Theory</a></li>
+                                <li><a href="#">Programming in Ansi C</a></li>
+                                <li><a href="#">Discrete Mathematics and Its Applications</a></li>
+                                <li><a href="#">Algorithmic Graph Theory</a></li>
+
+
+                            </ul>
+                        </div>
+                        <div class="col-md-3 footer-bottom-cate cate-bottom animated wow fadeInRight" data-wow-delay=".5s">
+                            <h6>Our Address</h6>
+                            <ul>
+                                <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Address : Venkatapur,Medchal, <span>CVSR, Hyderabad.</span></li>
+                                <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Email : <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@cvsr.ac.in" target="_blank">info@cvsr.ac.in</a></li>
+                                <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Phone : +91 8499953666</li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"> </div>
+                        <p class="footer-class"> © 2018 Digital Library . All Rights Reserved  </p>
+                    </div>
+                </div>
+            </div>
+
+</footer>
+    </div>
+
+  
+</body>
+</html>

@@ -1,0 +1,158 @@
+﻿@model Library.Web.UI.Models.StudentProfile
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2></h2>
+
+<div class="container">
+    <div class="row">
+        <h2></h2>
+
+
+        <div>
+            <div class="panel panel-default">
+                <div class="panel-heading">  <h4>User Profile</h4></div>
+                <div class="panel-body">
+
+                    <div class="box box-info">
+
+                        <div class="box-body">
+                            <div class="col-sm-6">
+                                <div align="center">
+                                    <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive">
+
+                                    <input id="profile-image-upload" class="hidden" type="file">
+                                    <div style="color:#999;">Details</div>
+                                    <!--Upload Image Js And Css-->
+
+                                </div>
+
+                                <br>
+
+                                <!-- /input-group -->
+                            </div>
+                            <div class="col-sm-6">
+                                <h4 style="color:#00b1b1;"> @Model.StudentName </h4></span>
+                                <span><p>@Model.StudentId</p></span>
+                            </div>
+
+                            <div class="clearfix"></div>
+                            <hr style="margin:5px 0 5px 0;">
+
+
+                            <div class="col-sm-5 col-xs-6 tital ">Gender:</div><div class="col-sm-7">@Model.Gender</div>
+                            <div class="clearfix"></div>
+                            <div class="bot-border"></div>
+                            <div class="col-sm-5 col-xs-6 tital ">Year Of Joining:</div><div class="col-sm-7">@Model.YOJ</div>
+                            <div class="clearfix"></div>
+                            <div class="bot-border"></div>
+                            <div class="col-sm-5 col-xs-6 tital ">Department:</div><div class="col-sm-7">@Model.Department</div>
+                            <div>
+                                <a href="#collapseActive" class="cart item_add" data-toggle="collapse" aria-expanded="false" aria-controls="collapseActive">Active Orders</a>
+                                <a href="#collapsHistory" class="cart item_add" data-toggle="collapse" aria-expanded="false" aria-controls="collapsHistory"> Orders History</a>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="bot-border"></div>
+
+
+
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+
+
+                </div>
+
+
+                <div class="collapse" id="collapseActive">
+                    <div class="container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Book Name</th>
+                                    <th>Author</th>
+                                    <th>Order Date</th>
+                                    <th>Time Slot</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.ActiveOrders)
+                                {
+                                    <tr>
+                                        <td>@item.BookName</td>
+                                        <td>@item.BookAuthor</td>
+                                        <td>@item.OrderDt</td>
+                                        <td>@item.TimeSlot</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="collapse" id="collapsHistory">
+                    <div class="container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Book Name</th>
+                                    <th>Author</th>
+                                    <th>Order Date</th>
+                                    <th>Time Slot</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.OrderHistory)
+                        {
+                        <tr>
+                            <td>@item.BookName</td>
+                            <td>@item.BookAuthor</td>
+                            <td>@item.OrderDt</td>
+                            <td>@item.TimeSlot</td>
+                        </tr>
+                        }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(function () {
+                $('#profile-image1').on('click', function () {
+                    $('#profile-image-upload').click();
+                });
+
+            });
+        </script>
+
+
+
+
+
+
+
+
+
+    </div>
+
+</div>
+
+<style>
+       input.hidden {
+    position: absolute;
+    left: -9999px;
+}
+
+#profile-image1 {
+    cursor: pointer;
+  
+     width: 100px;
+    height: 100px;
+	border:2px solid #03b1ce ;}
+	.tital{ font-size:16px; font-weight:500;}
+	 .bot-border{ border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0}	
+</style>
+

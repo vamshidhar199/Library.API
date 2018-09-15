@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Library.Web.UI.Models.BookDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInLeft;">
+            <li><a href="/Home/Index"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li class="active">Cart Summary</li>
+        </ol>
+    </div>
+</div>
+
+<div class="container">
+    <div class="check-out">
+        <h2>Checkout</h2>
+               
+
+        @if (ViewBag.status == true)
+        {
+            <div class="well">@ViewBag.Message</div>
+        }
+        else
+        {
+           
+            using (Html.BeginForm("PlaceOrder", "Cart", FormMethod.Post))
+            {
+            <table>
+                <tr>
+                    <th>Your Books</th>
+                    <th></th>
+                </tr>
+                @foreach (var m in Model)
+                {
+                    <tr>
+                        <td class="ring-in">
+                            <a href="/BookDisplay/Single?id=@m.BookaName&author=@m.BookAuthor" class="at-in">
+                                <img src="/images/@m.BookImg" class="img-responsive" alt="">
+                            </a>
+                            <div class="sed">
+                                <h5>@m.BookaName</h5>
+                                <p>By: @m.BookAuthor</p>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </td>
+                        <td> <a href="/Cart/Delete?id=@m.BookaName&author=@m.BookAuthor" class="cart item_add">Remove</a> </td>
+                    </tr>
+                }
+            </table>
+
+            <div class="available">            
+                <ul>
+                    <li>Choose Time Slot:
+                        @Html.DropDownList("ddlTimeSlot", new List<SelectListItem>
+                        {
+                            new SelectListItem{ Text="9:00 AM - 11:00 AM", Value = "9:00 AM - 11:00 AM" },
+                            new SelectListItem{ Text="11:00 AM - 1:00 PM", Value = "11:00 AM - 1:00 PM" },
+                            new SelectListItem{ Text="2:00 PM - 4:00 PM", Value = "2:00 PM - 4:00 PM" },
+                         })
+                        
+                    </li>
+                  
+                </ul>
+            </div>
+            <input type="submit" value="Place Order" class="btn btn-primary" />
+            @*<a href="/Cart/PlaceOrder/" class="to-buy">Place Order</a>*@
+                <div class="clearfix"> </div>
+                }
+            }
+    </div>
+    <!-------------->
+
+</div>
+

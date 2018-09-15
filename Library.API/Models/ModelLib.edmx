@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBLibModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\ANUJA\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\LIBRARY.API\LIBRARY.API\APP_DATA\DBLIB.MDF.dbo.BookDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BookDetails">
+          <Key>
+            <PropertyRef Name="BookaName" />
+            <PropertyRef Name="BookAuthor" />
+            <PropertyRef Name="BookImg" />
+            <PropertyRef Name="BookQty" />
+            <PropertyRef Name="BookCat" />
+            <PropertyRef Name="Dept" />
+            <PropertyRef Name="CreatedDt" />
+            <PropertyRef Name="ModifiedDt" />
+          </Key>
+          <Property Name="BookaName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BookSubTitle" Type="varchar" MaxLength="50" />
+          <Property Name="BookAuthor" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BookImg" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BookDesc" Type="varchar(max)" />
+          <Property Name="BookQty" Type="int" Nullable="false" />
+          <Property Name="BookCat" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Dept" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CreatedDt" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentDetails">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="StudentName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Department" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="YOJ" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentOrders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentId" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="BookName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BookAuthor" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderDt" Type="datetime" Nullable="false" />
+          <Property Name="TimeSlot" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ActiveOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentsList">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="StudentName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Function Name="Validate_User" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StudentId" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="DBLibModelStoreContainer">
+          <EntitySet Name="StudentDetails" EntityType="Self.StudentDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentOrders" EntityType="Self.StudentOrders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentsList" EntityType="Self.StudentsList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookDetails" EntityType="Self.BookDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BookDetails].[BookaName] AS [BookaName], 
+    [BookDetails].[BookSubTitle] AS [BookSubTitle], 
+    [BookDetails].[BookAuthor] AS [BookAuthor], 
+    [BookDetails].[BookImg] AS [BookImg], 
+    [BookDetails].[BookDesc] AS [BookDesc], 
+    [BookDetails].[BookQty] AS [BookQty], 
+    [BookDetails].[BookCat] AS [BookCat], 
+    [BookDetails].[Dept] AS [Dept], 
+    [BookDetails].[CreatedDt] AS [CreatedDt], 
+    [BookDetails].[ModifiedDt] AS [ModifiedDt]
+    FROM [dbo].[BookDetails] AS [BookDetails]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBLibModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="StudentOrder">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BookName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BookAuthor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrderDt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TimeSlot" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ActiveOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentsList">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StudentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BookDetail">
+          <Key>
+            <PropertyRef Name="BookaName" />
+            <PropertyRef Name="BookAuthor" />
+            <PropertyRef Name="BookImg" />
+            <PropertyRef Name="BookQty" />
+            <PropertyRef Name="BookCat" />
+            <PropertyRef Name="Dept" />
+            <PropertyRef Name="CreatedDt" />
+            <PropertyRef Name="ModifiedDt" />
+          </Key>
+          <Property Name="BookaName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BookSubTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BookAuthor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BookImg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BookDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BookQty" Type="Int32" Nullable="false" />
+          <Property Name="BookCat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dept" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDt" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="DBLibEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="StudentOrders" EntityType="Self.StudentOrder" />
+          <EntitySet Name="StudentsLists" EntityType="Self.StudentsList" />
+          <EntitySet Name="BookDetails" EntityType="Self.BookDetail" />
+          <FunctionImport Name="Validate_User" ReturnType="Collection(String)">
+            <Parameter Name="StudentId" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="StudentDetails" EntityType="DBLibModel.StudentDetail" />
+        </EntityContainer>
+        <EntityType Name="StudentDetail">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="StudentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="YOJ" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBLibModelStoreContainer" CdmEntityContainer="DBLibEntities">
+          <EntitySetMapping Name="StudentOrders">
+            <EntityTypeMapping TypeName="DBLibModel.StudentOrder">
+              <MappingFragment StoreEntitySet="StudentOrders">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+                <ScalarProperty Name="BookAuthor" ColumnName="BookAuthor" />
+                <ScalarProperty Name="OrderDt" ColumnName="OrderDt" />
+                <ScalarProperty Name="TimeSlot" ColumnName="TimeSlot" />
+                <ScalarProperty Name="ActiveOrder" ColumnName="ActiveOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentsLists">
+            <EntityTypeMapping TypeName="DBLibModel.StudentsList">
+              <MappingFragment StoreEntitySet="StudentsList">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookDetails">
+            <EntityTypeMapping TypeName="DBLibModel.BookDetail">
+              <MappingFragment StoreEntitySet="BookDetails">
+                <ScalarProperty Name="BookaName" ColumnName="BookaName" />
+                <ScalarProperty Name="BookSubTitle" ColumnName="BookSubTitle" />
+                <ScalarProperty Name="BookAuthor" ColumnName="BookAuthor" />
+                <ScalarProperty Name="BookImg" ColumnName="BookImg" />
+                <ScalarProperty Name="BookDesc" ColumnName="BookDesc" />
+                <ScalarProperty Name="BookQty" ColumnName="BookQty" />
+                <ScalarProperty Name="BookCat" ColumnName="BookCat" />
+                <ScalarProperty Name="Dept" ColumnName="Dept" />
+                <ScalarProperty Name="CreatedDt" ColumnName="CreatedDt" />
+                <ScalarProperty Name="ModifiedDt" ColumnName="ModifiedDt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Validate_User" FunctionName="DBLibModel.Store.Validate_User" />
+          <EntitySetMapping Name="StudentDetails">
+            <EntityTypeMapping TypeName="DBLibModel.StudentDetail">
+              <MappingFragment StoreEntitySet="StudentDetails">
+                <ScalarProperty Name="YOJ" ColumnName="YOJ" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

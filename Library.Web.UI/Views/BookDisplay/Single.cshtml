@@ -1,0 +1,156 @@
+﻿@model Library.Web.UI.Models.BookDetail
+
+@{
+    ViewBag.Title = "Single";
+}
+<script>
+
+</script>
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInLeft;">
+            <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li class="active">Book Overview</li>
+        </ol>
+    </div>
+</div>
+
+<div class="single">
+    
+    <div class="container">
+        @using (Html.BeginForm("Single", "BookDisplay",FormMethod.Post))
+        {
+        <div class="col-md-9">
+            <div class="col-md-5 grid">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li data-thumb="images/si.jpg">
+                            <div class="thumb-image"> <img src="~/images/@Model.BookImg" data-imagezoom="true" class="img-responsive"> </div>
+                        </li>
+                       
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-7 single-top-in">
+                <div class="single-para simpleCart_shelfItem">
+                    <h2>
+                      @Model.BookaName
+                    </h2>
+                    
+                    <h3>
+                      @Model.BookAuthor
+                    </h3 >
+                    <hr />
+                    <p> @Model.BookDesc </p >
+                    <h3>Quantity:<p>@Model.BookQty</p></h3>
+                    @*<div class="star-on">
+                        <ul>
+                            <li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
+                        </ul>
+                      
+                        <div class="clearfix"> </div>
+                    </div>*@
+                    <input type="submit" value="Add to Cart" class="btn btn-primary"/>
+                    @*<a href="/BookDisplay" class="cart item_add">Add to Cart</a>*@
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+           
+        </div>
+        }
+        <!----->
+        <div class="col-md-3 product-bottom">
+            <!--categories-->
+            <div class=" rsidebar span_1_of_left">
+                <h3 class="cate">Categories</h3>
+                <ul class="menu-drop">
+                    <li class="item1">
+                        <a href="/BookDisplay/Index/IT">IT </a>
+                        <ul class="cute">
+                            <li class="/BookDisplay/Index/IT"><a href="/BookDisplay/Index/IT">JAVA </a></li>
+                            <li class="/BookDisplay/Index/IT"><a href="/BookDisplay/Index/IT">C++ </a></li>
+                            <li class="/BookDisplay/Index/IT"><a href="/BookDisplay/Index/IT">C </a></li>
+                        </ul>
+                    </li>
+                    <li class="item2">
+                        <a href="/BookDisplay/Index/CSE">CSE </a>
+                        <ul class="cute">
+                            <li class="subitem1"><a href="/BookDisplay/Index/CSE">C </a></li>
+                            <li class="subitem2"><a href="/BookDisplay/Index/CSE">JAVA </a></li>
+                            <li class="subitem3"><a href="/BookDisplay/Index/CSE">C++ </a></li>
+                        </ul>
+                    </li>
+                    <li class="item3">
+                        <a href="/BookDisplay/Index/ECE">ECE</a>
+                        <ul class="cute">
+                            <li class="subitem1"><a href="/BookDisplay/Index/ECE">BEE</a></li>
+                            <li class="subitem2"><a href="/BookDisplay/Index/ECE">CIRCUITS </a></li>
+                            <li class="subitem3"><a href="/BookDisplay/Index/ECE">MICRO-PROCESSOR</a></li>
+                        </ul>
+                    </li>
+                    <li class="item4">
+                        <a href="/BookDisplay/Index/EEE">EEE</a>
+                        <ul class="cute">
+                            <li class="subitem1"><a href="/BookDisplay/Index/EEE">BEE </a></li>
+                            <li class="subitem2"><a href="/BookDisplay/Index/EEE">CIRCUITS </a></li>
+                            <li class="subitem3"><a href="/BookDisplay/Index/EEE">SDLD</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="item4">
+                        <a href="/BookDisplay/Index/ALL">ALL</a>
+                        <ul class="cute">
+                            <li class="subitem1"><a href="/BookDisplay/Index/ALL">ALL </a></li>
+                            <li class="subitem2"><a href="product.html"> </a></li>
+                            <li class="subitem3"><a href="product.html"> </a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!--initiate accordion-->
+            <script type="text/javascript">
+							$(function() {
+							    var menu_ul = $('.menu-drop > li > ul'),
+							           menu_a  = $('.menu-drop > li > a');
+							    menu_ul.hide();
+							    menu_a.click(function(e) {
+							        e.preventDefault();
+							        if(!$(this).hasClass('active')) {
+							            menu_a.removeClass('active');
+							            menu_ul.filter(':visible').slideUp('normal');
+							            $(this).addClass('active').next().stop(true,true).slideDown('normal');
+							        } else {
+							            $(this).removeClass('active');
+							            $(this).next().stop(true,true).slideUp('normal');
+							        }
+							    });
+
+							});
+            </script>
+            <!--//menu-->
+            <!--tag-->
+            <div class="tag">
+                <h3 class="cate">Tags</h3>
+                <div class="tags">
+                    <ul>
+                        <li><a href="#">C</a></li>
+                        <li><a href="#">C++</a></li>
+                        <li><a href="#">Java</a></li>
+                        <li><a href="#">DBMS</a></li>
+                        <li><a href="#">OS</a></li>
+                        <li><a href="#">SE</a></li>
+                        <li><a href="#">Circuits</a></li>
+                        <li><a href="#">BEE</a></li>
+
+                    </ul>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
