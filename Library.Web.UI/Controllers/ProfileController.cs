@@ -14,7 +14,7 @@ namespace Library.Web.UI.Controllers
     public class ProfileController : Controller
     {
         string Baseurl = "http://localhost:56181/";
-        // GET: Profile
+        // GET: Profil
 
         public async System.Threading.Tasks.Task<ActionResult> Index()
         {
